@@ -4,8 +4,8 @@ html {
 }
 body {
   background: #fd7a59;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #8969f1, #b44242);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8969f1, #b44242); 
+  background: -webkit-linear-gradient(to right, #fdb18d, #b44242);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fdb18d, #b44242); 
   font-family: Arial, Helvetica, sans-serif;
 }
 ul {
