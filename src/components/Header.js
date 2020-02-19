@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const ContenedorHeader = styled.header`
-    background-color: #5F82FC;
+    background-color: #456cf9;
     padding: 10px;
     font-weight: bold;
     color: black;
