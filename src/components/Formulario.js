@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 const Campo = styled.div`
@@ -24,13 +24,54 @@ const InputRadio = styled.input`
     margin: 0 6px;
 `;
 
+const Button = styled.button`
+    background-color: #456cf9;
+    font-size: 20px;
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Slabo 27px', serif;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border: none;
+    transition: background-color .3s ease;
+    margin-top: 1rem;
+
+    &:hover{
+        background-color: #8771ff;
+        cursor: pointer;
+    }
+`;
+
 
 const Formulario = () => {
+
+    const [ datos, guardarDatos ] = useState ({
+        zone: '',
+        year: '',
+        type: ''
+    });
+
+    //extraer valores del state
+    const { zone, year, type } = datos;
+
+    //leer datos del form y colocarlos en el state
+    const obtenerInformacion = e => {
+        guardarDatos({
+            ...datos,
+            [e.target.name] : e.target.value
+        })
+    }
+
     return ( 
         <form>
             <Campo>
                 <Label>Zona de fabricación: </Label>
-                <Select>
+                <Select
+                    name="zone"
+                    value={zone}
+                    onChange={obtenerInformacion}
+                >
                     <option value="">-- Seleccionar --</option>
                     <option value="americano">Americano</option>
                     <option value="europeo">Europeo</option>
@@ -40,7 +81,11 @@ const Formulario = () => {
 
             <Campo>
                 <Label>Año de fabricación: </Label>
-                <Select>                    
+                <Select
+                name="year"
+                value={year}
+                onChange={obtenerInformacion}
+                >                    
                     <option value="">-- Seleccionar --</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -67,24 +112,30 @@ const Formulario = () => {
                 <Label>Tipo de Seguro: </Label>
                 <InputRadio
                     type="radio"
-                    name="tipo de seguro"
+                    name="type"
                     value="terceros"
+                    checked={type === "terceros"}
+                    onChange={obtenerInformacion}
                 /> Terceros   
 
                 <InputRadio
                     type="radio"
-                    name="tipo de seguro"
+                    name="type"
                     value="terceros ampliado"
+                    checked={type === "terceros ampliado"}
+                    onChange={obtenerInformacion}
                 /> Terceros ampliado  
 
                 <InputRadio
                     type="radio"
-                    name="tipo de seguro"
+                    name="type"
                     value="todo riesgo"
+                    checked={type === "todo riesgo"}
+                    onChange={obtenerInformacion}
                 /> Todo riesgo
             </Campo>
 
-            <button type="button">Calcular</button>
+            <Button type="button">Calcular</Button>
         </form>
 
      );
