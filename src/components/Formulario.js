@@ -43,6 +43,17 @@ const Button = styled.button`
     }
 `;
 
+const Error = styled.div`
+    background-color: red;
+    color: black;
+    font-family: 'Slabo 27px', serif;
+    font-weight: bolder;
+    padding: 1rem;
+    width: 94%;
+    text-align: center;
+    margin-top: 2rem;
+`;
+
 
 const Formulario = () => {
 
@@ -51,6 +62,7 @@ const Formulario = () => {
         year: '',
         type: ''
     });
+    const [ error, guardarError ] = useState(false);
 
     //extraer valores del state
     const { zone, year, type } = datos;
@@ -63,8 +75,37 @@ const Formulario = () => {
         })
     }
 
+    //cuando el usuario realiza submit
+    const calcularSeguro = e => {
+        e.preventDefault();
+        
+        if(zone.trim() === '' || year.trim() === '' || type.trim() === '') {
+            guardarError(true);
+            return;
+        }
+
+        guardarError(false);
+
+        // obtener la diferencia de años
+
+        // por cada año hay que restar un 3%
+
+        // Americano +20%
+        // Asiatico +10%
+        // Europeo +5%
+
+        // Terceros 20%
+        // Terceros ampliado 35%
+        // Todo riesgo 50%
+
+        // Total
+    }
+
     return ( 
-        <form>
+        <form
+           onSubmit={calcularSeguro} 
+        >
+
             <Campo>
                 <Label>Zona de fabricación: </Label>
                 <Select
@@ -135,8 +176,13 @@ const Formulario = () => {
                 /> Todo riesgo
             </Campo>
 
-            <Button type="button">Calcular</Button>
+            <Button type="submit">Calcular</Button>
+
+            { error ? <Error>todos los campos deben tener contenido</Error> : null}
+           
         </form>
+
+        
 
      );
 }
