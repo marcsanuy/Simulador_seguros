@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { obtenerDiferenciaYear } from '../helper';
 
 const Campo = styled.div`
     display: flex;
@@ -29,8 +30,6 @@ const Button = styled.button`
     font-size: 20px;
     width: 100%;
     padding: 1rem;
-    font-family: 'Slabo 27px', serif;
-    color: black;
     text-transform: uppercase;
     font-weight: bolder;
     border: none;
@@ -45,9 +44,6 @@ const Button = styled.button`
 
 const Error = styled.div`
     background-color: red;
-    color: black;
-    font-family: 'Slabo 27px', serif;
-    font-weight: bolder;
     padding: 1rem;
     width: 94%;
     text-align: center;
@@ -86,9 +82,17 @@ const Formulario = () => {
 
         guardarError(false);
 
+        // Precio base 500
+        let resultado = 500;
+
         // obtener la diferencia de años
 
+        const diferencia = obtenerDiferenciaYear(year);
+        console.log(diferencia);
+
         // por cada año hay que restar un 3%
+        resultado -= (( diferencia * 3) * resultado) / 100;
+        console.log(resultado);
 
         // Americano +20%
         // Asiatico +10%
@@ -100,6 +104,7 @@ const Formulario = () => {
 
         // Total
     }
+    
 
     return ( 
         <form
@@ -178,7 +183,7 @@ const Formulario = () => {
 
             <Button type="submit">Calcular</Button>
 
-            { error ? <Error>todos los campos deben tener contenido</Error> : null}
+            { error ? <Error>Todos los campos deben tener contenido.</Error> : null}
            
         </form>
 
