@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { obtenerDiferenciaYear } from '../helper';
+import { obtenerDiferenciaYear, calcularZona } from '../helper';
 
 const Campo = styled.div`
     display: flex;
@@ -88,15 +88,17 @@ const Formulario = () => {
         // obtener la diferencia de años
 
         const diferencia = obtenerDiferenciaYear(year);
-        console.log(diferencia);
+        
 
         // por cada año hay que restar un 3%
         resultado -= (( diferencia * 3) * resultado) / 100;
-        console.log(resultado);
+        
 
         // Americano +20%
         // Asiatico +10%
         // Europeo +5%
+        resultado = calcularZona(zone) * resultado;
+        console.log(resultado);
 
         // Terceros 20%
         // Terceros ampliado 35%
