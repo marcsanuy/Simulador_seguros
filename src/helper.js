@@ -24,3 +24,24 @@ export function calcularZona(zone) {
 
     return incremento;
 }
+
+// Calcula el tipo de seguro
+export function calcularTipoSeguro(type) {
+    let plan;
+
+    switch(type) {
+        case 'terceros':
+            plan = 1.1;
+            break;
+        case 'terceros ampliado':
+            plan = 1.5;
+            break;
+        case 'todo riesgo':
+            plan = 2;
+            break;
+        default:
+            break;
+    }
+
+    return plan;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { obtenerDiferenciaYear, calcularZona } from '../helper';
+import { obtenerDiferenciaYear, calcularZona, calcularTipoSeguro } from '../helper';
 
 const Campo = styled.div`
     display: flex;
@@ -98,11 +98,12 @@ const Formulario = () => {
         // Asiatico +10%
         // Europeo +5%
         resultado = calcularZona(zone) * resultado;
-        console.log(resultado);
+        
 
-        // Terceros 20%
-        // Terceros ampliado 35%
-        // Todo riesgo 50%
+        // Incremento de póliza por tipo de seguro contratado
+        const IncrementoPorTipo = calcularTipoSeguro(type);
+        resultado = parseFloat (IncrementoPorTipo * resultado).toFixed(2);
+        console.log(resultado);
 
         // Total
     }
