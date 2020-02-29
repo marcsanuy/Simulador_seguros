@@ -51,7 +51,7 @@ const Error = styled.div`
 `;
 
 
-const Formulario = () => {
+const Formulario = ({guardarResumen}) => {
 
     const [ datos, guardarDatos ] = useState ({
         zone: '',
@@ -106,6 +106,11 @@ const Formulario = () => {
         console.log(resultado);
 
         // Total
+        guardarResumen({
+            cotizacion: resultado,
+            datos
+        });
+
     }
     
 
@@ -158,7 +163,7 @@ const Formulario = () => {
             </Campo>
 
             <Campo>
-                <Label>Tipo de Seguro: </Label>
+                <Label>Tipo de Cobertura: </Label>
                 <InputRadio
                     type="radio"
                     name="type"
