@@ -1,4 +1,10 @@
 import React, { Fragment } from 'react';
+import styled from '@emotion/styled';
+import { primerMayuscula } from '../helper';
+
+const ContenedorResumen = styled.div`
+    text-align: center;    
+`
 
 
 const Resumen = ({datos}) => {
@@ -9,14 +15,14 @@ const Resumen = ({datos}) => {
     if(zone === '' || year === '' || type === '' ) return null;
     
     return ( 
-        <Fragment>
-            <h2>Resumen de Cotización</h2>
+        <ContenedorResumen>
+            <h3>Resumen de Cotización</h3>
             <ul>
-                <li>Zona: </li>
-                <li>Año: </li>
-                <li>Tipo: </li>
+                <li>Zona: {primerMayuscula(zone)} </li>
+                <li>Año: {primerMayuscula(year)} </li>
+                <li>Tipo: {primerMayuscula(type)} </li>
             </ul>
-        </Fragment>
+        </ContenedorResumen>
         
      );
 }

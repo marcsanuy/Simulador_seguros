@@ -45,3 +45,8 @@ export function calcularTipoSeguro(type) {
 
     return plan;
 }
+
+// Mostrar prinmera letra en mayúscula
+export function primerMayuscula(texto) {
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
