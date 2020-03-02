@@ -41,7 +41,7 @@ const Resultado = ({cotizacion}) => {
                         <CSSTransition
                             classNames="resultado"
                             key={cotizacion}
-                            timeout={{ enter: 1500, exit: 1500 }}
+                            timeout={{ enter: 2000, exit: 2000 }}
                         >
                                 <TextoCotizacion>Total: {cotizacion} €</TextoCotizacion>
                         </CSSTransition>
