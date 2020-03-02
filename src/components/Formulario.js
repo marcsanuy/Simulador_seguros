@@ -114,7 +114,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
 
             //pasa la info al componente principal
             guardarResumen({
-                cotizacion: resultado,
+                cotizacion: Number(resultado),
                 datos
             });
 

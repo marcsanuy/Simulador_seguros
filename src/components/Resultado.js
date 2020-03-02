@@ -18,7 +18,7 @@ const ResultadoCotizacion = styled.div`
     position: relative;
 `;
 
-const TextoCotizacion = styled.p`
+const TextoCotizacion = styled.span`
     color: black;
     padding: 1rem;
     text-transform: uppercase;
@@ -43,7 +43,7 @@ const Resultado = ({cotizacion}) => {
                             key={cotizacion}
                             timeout={{ enter: 2000, exit: 2000 }}
                         >
-                                <TextoCotizacion>Total: {cotizacion} €</TextoCotizacion>
+                                <TextoCotizacion>Total: <span>{cotizacion}</span> €</TextoCotizacion>
                         </CSSTransition>
                 </TransitionGroup>
             </ResultadoCotizacion>
