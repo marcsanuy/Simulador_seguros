@@ -51,7 +51,7 @@ const Error = styled.div`
 `;
 
 
-const Formulario = ({guardarResumen}) => {
+const Formulario = ({guardarResumen, guardarCargando}) => {
 
     const [ datos, guardarDatos ] = useState ({
         zone: '',
@@ -103,13 +103,25 @@ const Formulario = ({guardarResumen}) => {
         // Incremento de póliza por tipo de seguro contratado
         const IncrementoPorTipo = calcularTipoSeguro(type);
         resultado = parseFloat (IncrementoPorTipo * resultado).toFixed(2);
-        console.log(resultado);
+
+        guardarCargando(true);
 
         // Total
-        guardarResumen({
-            cotizacion: resultado,
-            datos
-        });
+        setTimeout(() => {
+
+            //Elimina el Spinner
+            guardarCargando(false);
+
+            //pasa la info al componente principal
+            guardarResumen({
+                cotizacion: resultado,
+                datos
+            });
+
+        }, 2000);
+        
+        
+        
 
     }
     
